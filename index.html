@@ -706,15 +706,24 @@
     .founder-sec {
       background: var(--white);
       position: relative;
+      border-top: 1.5px solid var(--accent);
     }
     .founder-img-wrap {
       position: relative;
       min-height: 360px;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      background: var(--surface);
+      overflow: visible;
+      background-color: #FDF6EE;
+      background-image: url("images/pattern-vine.png");
+      background-size: 420px 420px;
+      background-repeat: repeat;
+      padding: 24px 18px 0;
     }
-    .founder-img-wrap img { object-position: center top; }
+    .founder-img-wrap img {
+      width: 100%;
+      height: auto;
+      object-position: center top;
+      border: 1px solid rgba(196,82,42,0.18);
+    }
     .founder-plate {
       position: absolute;
       left: 0;
@@ -741,6 +750,8 @@
       position: relative;
       z-index: 1;
       padding: 26px var(--pad-x);
+      border-top: 1.5px solid var(--accent);
+      background: #FFFFFF;
     }
     .founder-h {
       margin: 8px 0 16px;
@@ -905,9 +916,9 @@
     .ft-links-wrap,
     .ft-connect {
       border: 1px solid rgba(196,82,42,0.16);
-      background: rgba(255,255,255,0.84);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: rgba(255,255,255,0.58);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
       padding: 16px;
     }
     .footer-brand {
@@ -1017,7 +1028,9 @@
       border-top: 0.5px solid rgba(196,82,42,0.18);
       color: #9B7A5A;
       font-size: 11px;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.46);
+      backdrop-filter: blur(1px);
+      -webkit-backdrop-filter: blur(1px);
       padding-left: 12px;
       padding-right: 12px;
       padding-bottom: 12px;
@@ -1110,7 +1123,7 @@
       }
       .review-card { min-height: 142px; padding: 18px; }
       .founder-sec { display: grid; grid-template-columns: 44% 56%; }
-      .founder-img-wrap { aspect-ratio: auto; min-height: 720px; }
+      .founder-img-wrap { min-height: 0; padding: 34px; }
       .founder-txt { padding: 56px 64px; display: flex; flex-direction: column; justify-content: center; }
       .process-grid { grid-template-columns: repeat(4, 1fr); }
       .proc-item { min-height: 285px; aspect-ratio: auto; }
@@ -1283,7 +1296,7 @@
 
     <section class="founder-sec pattern-buta pattern-buta-light" id="founderSec">
       <div class="founder-img-wrap">
-        <img src="images/DB89865D-35E0-479E-990F-900CA7FBF475.jpg" alt="Kuddi cotton kurti in warm natural light">
+        <img src="images/founder.png" alt="Pooja, founder of Kuddi">
         <div class="founder-plate"><span class="fp-name display">Pooja</span><span class="fp-title">Founder, Kuddi by Pooja</span></div>
       </div>
       <div class="founder-txt">
@@ -1472,7 +1485,7 @@
         const speed = 0.42;
 
         function resetRightColumn() {
-          posR = -Math.min(96, colR.scrollHeight / 10);
+          posR = -(colR.scrollHeight / 2);
           colR.style.transform = `translateY(${posR}px)`;
         }
 
@@ -1483,7 +1496,7 @@
             posL -= speed;
             posR += speed;
             if (Math.abs(posL) >= halfL) posL = 0;
-            if (posR >= halfR) posR = 0;
+            if (posR >= 0) posR = -halfR;
             colL.style.transform = `translateY(${posL}px)`;
             colR.style.transform = `translateY(${posR}px)`;
           }
